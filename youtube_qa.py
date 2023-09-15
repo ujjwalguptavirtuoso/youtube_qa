@@ -255,7 +255,10 @@ def generate_local_video_transcript(cursor: evadb.EvaDBCursor, video_path: str) 
     # retrieve generated transcript
     raw_transcript_string = (
         cursor.table("local_video_text").select("text").df()["local_video_text.text"][0]
+        #cursor.query("SELECT * FROM local_video_text")
     )
+
+    print(raw_transcript_string)
     return raw_transcript_string
 
 
@@ -379,6 +382,7 @@ if __name__ == "__main__":
     if user_input["from_youtube"]:
         try:
             transcript = download_youtube_video_transcript(user_input["video_link"])
+            transcript = None
         except Exception as e:
             print(e)
             print(
@@ -398,7 +402,7 @@ if __name__ == "__main__":
                 "task": "automatic-speech-recognition",
                 "model": "openai/whisper-base",
             }
-            speech_analyzer_udf_rel = cursor.create_udf(
+            speech_analyzer_udf_rel = cursor.create_function(
                 "SpeechRecognizer", type="HuggingFace", **args
             )
             speech_analyzer_udf_rel.execute()

@@ -6,6 +6,9 @@ Additionally, you can ask the app to generate a well-formatted blog of the video
 
 This app is powered by [EvaDB](https://github.com/georgia-tech-db/eva), a Python-based database system for AI applications developed by Georgia Tech's DB Group.
 
+## Credts
+This is forked from the work done by https://github.com/yulaicui/youtube_video_qa for EvaDB 0.2.14. Updated methods and tasks for compatibility with EvaDB 0.3.4. There is still some work pending on porting python native constrcts to EvaQL.
+
 ## Setup
 Ensure that the local Python version is >= 3.8. Install the required libraries:
 
