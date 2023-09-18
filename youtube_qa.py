@@ -19,6 +19,9 @@ from typing import Dict
 import pandas as pd
 
 import evadb
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def try_to_import_pytube():
